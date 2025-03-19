@@ -9,7 +9,7 @@ export default function Login (){
             placeholder='senha'/>
             <Button
           title="logar"
-          color="blue"
+          color="pink"
           
          />
             
