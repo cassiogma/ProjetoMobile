@@ -8,7 +8,7 @@ export default function Login (){
             <TextInput style={styles.senha}
             placeholder='senha'/>
             <Button
-          title="logar"
+          title="Login"
           color="pink"
           
          />
