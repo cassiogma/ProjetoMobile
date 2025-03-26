@@ -1,8 +1,10 @@
 import {Text, View,StyleSheet,Image} from 'react-native'
+
 export default function Home (){
     return(
         <View style={styles.Home}>
             <Text style={styles.texto1}>bem vindo nosso sistema de </Text>
+            
             <Row></Row>
             <Text style={styles.texto2}>catalogo de receitas proteicas</Text>
             <Row2></Row2>          

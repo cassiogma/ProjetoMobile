@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler'
-
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { NavigationContainer } from '@react-navigation/native';
 import {createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -27,8 +27,20 @@ const BottomTab = createBottomTabNavigator();
         //headerTitleAlign:'center'
       }}
       >
-        <BottomTab.Screen name='Login' component={Login}/>
-        <BottomTab.Screen name='Home' component={Home}/>
+        <BottomTab.Screen name='Login' component={Login}
+        options={{
+          tabBarIcon: () => (
+            
+            <MaterialIcons name="login" size={24} color="black" />
+          ),
+        }}/>
+        <BottomTab.Screen name='Home' component={Home}
+        options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="home" size={24} color="black" />
+          ),
+        }}/>
+
       </BottomTab.Navigator>
     </NavigationContainer>
   );
