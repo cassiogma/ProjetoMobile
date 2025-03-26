@@ -14,24 +14,10 @@ const BottomTab = createBottomTabNavigator();
   return (
     
     <NavigationContainer>
-      <BottomTab.Navigator 
-      initialRouteName='Login'
-      screenOptions={{
-        tabBarActiveTintColor:	'#3CB371',
-        tabBarActiveBackgroundColor:'#EEE8AA',
-        tabBarInactiveBackgroundColor:'#FFFFE0',
-        tabBarInactiveTintColor:'#556B2F',
-        headerStyle:{
-          backgroundColor: '#EEE8AA',      },
-        headerTintColor:'#3CB371',
-        //headerTitleAlign:'center'
-      }}
-      >
+      <BottomTab.Navigator>
         <BottomTab.Screen name='Login' component={Login}/>
         <BottomTab.Screen name='Home' component={Home}/>
       </BottomTab.Navigator>
     </NavigationContainer>
   );
 }
-
-

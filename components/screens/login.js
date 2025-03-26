@@ -1,5 +1,6 @@
 import {Text, View,StyleSheet,TextInput,Button} from 'react-native'
-export default function Login (){
+import Home from './home';
+export default function Login ({navigation}){
     return(
         <View style={styles.Login}>
             <Text style={styles.titulo}>4fit</Text>
@@ -9,8 +10,8 @@ export default function Login (){
             placeholder='senha'/>
             <Button
           title="logar"
-          color="blue"
-          
+          color="#3CB371"
+          onPress={() => navigation.navigate('Home')}
          />
             
         </View> 
@@ -24,7 +25,6 @@ const styles = StyleSheet.create({
         justifyContent:'space-evenly',
         alignItems:'center',
         borderWidth:1,
-        
     },
     email:{
         justifyContent:'center',
@@ -43,6 +43,8 @@ const styles = StyleSheet.create({
         textAlign:'center'
     },
     titulo:{
-        fontSize:75
+        fontSize:75,
+        fontStyle:'italic',
+        color:'#556B2F'
     }
 })
