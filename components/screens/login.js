@@ -31,12 +31,16 @@ const styles = StyleSheet.create({
         fontSize:30,
         margin: 12,
         borderWidth: 1,
+        padding: 10,
+        textAlign:'center'
     },
     senha:{
         fontSize:30,
         justifyContent:'center',
         margin: 12,
         borderWidth: 1,
+        padding: 10,
+        textAlign:'center'
     },
     titulo:{
         fontSize:75
