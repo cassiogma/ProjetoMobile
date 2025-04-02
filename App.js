@@ -56,7 +56,7 @@ const Stack = createStackNavigator();
     <NavigationContainer>
       <Stack.Navigator>
       <Stack.Screen name='Login' component={Login}/>
-      <Stack.Screen options={{headerShow:false}} name= 'Hometab' component = {Bottomtabs}/>
+      <Stack.Screen options={{headerShown:false}} name= 'Hometab' component = {Bottomtabs}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
