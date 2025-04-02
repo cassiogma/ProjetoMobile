@@ -1,21 +1,19 @@
 import 'react-native-gesture-handler'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { NavigationContainer } from '@react-navigation/native';
-import {createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Home from './components/screens/home';
 import Login from './components/screens/login';
+import Feed from './components/screens/feed';
+import Counter from './components/screens/counter';
 
-
-export default function App() {
-
-const BottomTab = createBottomTabNavigator();
-
-  return (
-    
-    <NavigationContainer>
-      <BottomTab.Navigator 
-      initialRouteName='Login'
+function Bottomtabs(){
+  const BottomTab = createBottomTabNavigator();
+  return(
+    <BottomTab.Navigator 
       screenOptions={{
         tabBarActiveTintColor:	'#3CB371',
         tabBarActiveBackgroundColor:'#EEE8AA',
@@ -27,21 +25,39 @@ const BottomTab = createBottomTabNavigator();
         //headerTitleAlign:'center'
       }}
       >
-        <BottomTab.Screen name='Login' component={Login}
-        options={{
-          tabBarIcon: () => (
-            
-            <MaterialIcons name="login" size={24} color="black" />
-          ),
-        }}/>
         <BottomTab.Screen name='Home' component={Home}
         options={{
           tabBarIcon: () => (
             <MaterialIcons name="home" size={24} color="black" />
           ),
         }}/>
+        <BottomTab.Screen name='feed' component={Feed}
+        options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="feed" size={24} color="black" />
+          ),
+        }}/>
+        <BottomTab.Screen name='counter' component={Counter}
+        options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="exposure-minus-1" size={24} color="black" />
+          ),
+        }}/>
 
       </BottomTab.Navigator>
+  )
+}
+
+export default function App() {
+
+const Stack = createStackNavigator();
+  return (
+    
+    <NavigationContainer>
+      <Stack.Navigator>
+      <Stack.Screen name='Login' component={Login}/>
+      <Stack.Screen options={{headerShow:false}} name= 'Hometab' component = {Bottomtabs}/>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

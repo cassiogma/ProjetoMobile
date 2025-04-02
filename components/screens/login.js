@@ -9,9 +9,9 @@ export default function Login ({navigation}){
             <TextInput style={styles.senha}
             placeholder='senha'/>
             <Button
-          title="logar"
+          title="login"
           color="#3CB371"
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('Hometab')}
          />
             
         </View> 
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         textAlign:'center'
     },
     titulo:{
-        fontSize:75,
+        fontSize:55,
         fontStyle:'italic',
         color:'#556B2F'
     }
