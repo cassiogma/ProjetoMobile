@@ -1,4 +1,4 @@
-import { View,Text,Button,StyleSheet,ScrollView,TouchableOpacity} from "react-native";
+import { View,Text,Button,StyleSheet,ScrollView,TouchableOpacity,TextInput} from "react-native";
 import {useState} from 'react';
 
 export default function Counter (){
@@ -7,11 +7,13 @@ export default function Counter (){
     function add (){
         setContador(contador + 1)
     }
+    
     function sub (){
         if (contador > 0) { 
         setContador(contador - 1)
         }
     }
+    
     return(
         <View style={styles.container}>
             <Text style = {styles.texto}>contador: {contador}</Text>
@@ -24,6 +26,10 @@ export default function Counter (){
                 <TouchableOpacity style={styles.toque} onPress={sub}>
                     <Text style= {styles.txtb}>-</Text>
                 </TouchableOpacity>
+            </View>
+            <View style={styles.viewinput}>
+                <TextInput style={styles.input} placeholder="nome"/>
+                <TextInput style={styles.input} placeholder="email"/>
             </View>
 
             <Button
@@ -62,6 +68,15 @@ const styles = StyleSheet.create({
     },
     txtb:{
         textAlign:'center',
-        fontSize:50
+        fontSize:50,
+    },
+    viewinput:{
+        width:'20%',
+        height:'20%',
+        justifyContent:'space-around'
+    },
+    input:{
+        width:'80%',
+        fontSize:'30',
     }
 })
