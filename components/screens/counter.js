@@ -2,7 +2,9 @@ import { View,Text,Button,StyleSheet,ScrollView,TouchableOpacity,TextInput} from
 import {useState} from 'react';
 
 export default function Counter (){
-    const [contador, setContador] = useState(0)
+    const [contador, setContador] = useState("")
+    const [nome, setNome] = useState("")
+    const [email, setEmail] = useState("")
 
     function add (){
         setContador(contador + 1)
@@ -28,9 +30,10 @@ export default function Counter (){
                 </TouchableOpacity>
             </View>
             <View style={styles.viewinput}>
-                <TextInput style={styles.input} placeholder="nome"/>
-                <TextInput style={styles.input} placeholder="email"/>
+                <TextInput style={styles.input} placeholder="nome" value={nome} onChangeText={setNome}/>
+                <TextInput style={styles.input} placeholder="email" value={email} onChangeText={setEmail}/>
             </View>
+            <Text>Oi, {nome}, seu email é {email}</Text>
 
             <Button
                       title="volta pro login"
