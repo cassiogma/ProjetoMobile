@@ -1,23 +1,28 @@
 import {Text, View,StyleSheet,TextInput,Button} from 'react-native'
-import Home from './home';
-import {signInWithEmailAndPassword} from 'firebase/auth';
+import { useState } from 'react';
+
+import { createUserWithEmailAndPassword} from "firebase/auth";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+
 import { auth } from '../controller';
-import {useState} from "react";
-export default function Login ({navigation}){
+import Home from './home';
+export default function Register ({navigation}){
 
     const [email,setEmail] = useState("")
     const [senha,setSenha] = useState("")
 
-    const VerificaUser = () => {
-            signInWithEmailAndPassword(auth,email,senha).
-            then(userCredential => {
-                console.log('usuario logado', userCredential.user.email);
-                navigation.navigate('Hometab');
-            })
-            .catch((error) => {
-                console.log('erro ao logar', error.message)
-            })
-        }
+    
+    const cadastroUser = () => {
+        createUserWithEmailAndPassword(auth, email, senha)
+        .then((userCredential) => {
+            console.log('cadastrado', userCredential.user.email)
+            navigation.navigate('Login');
+          })
+          .catch((error) => {
+            console.log('erro', error.message)
+            // ..
+          });
+    }
     return(
         <View style={styles.Login}>
             <Text style={styles.titulo}>4fit</Text>
@@ -26,20 +31,19 @@ export default function Login ({navigation}){
             onChangeText={setEmail}
             placeholder='email'/>
             <TextInput style={styles.senha}
+            placeholder='senha'
             value={senha}
             onChangeText={setSenha}
-            secureTextEntry={true}
-            placeholder='senha'/>
+            secureTextEntry={true}/>
             <Button
-          title="Entrar"
+          title="Cadastrar"
           color="#3CB371"
-/*           onPress={() => navigation.navigate('Hometab')} */
-          onPress = {VerificaUser}
+          onPress={cadastroUser}
          />
          <Button
-          title="Cadastre-se"
+          title="login"
           color="#3CB371"
-          onPress={() => navigation.navigate('Cadastro')}
+          onPress={() => navigation.navigate('Login')}
          />
             
         </View> 

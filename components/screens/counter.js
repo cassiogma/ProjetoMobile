@@ -2,7 +2,7 @@ import { View,Text,Button,StyleSheet,ScrollView,TouchableOpacity,TextInput} from
 import {useState} from 'react';
 
 export default function Counter (){
-    const [contador, setContador] = useState("")
+    const [contador, setContador] = useState(0)
     const [nome, setNome] = useState("")
     const [email, setEmail] = useState("")
 
