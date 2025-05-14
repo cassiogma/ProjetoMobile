@@ -40,11 +40,11 @@ export default function Register ({navigation}){
           color="#3CB371"
           onPress={cadastroUser}
          />
-         <Button
+      {/*    <Button
           title="login"
           color="#3CB371"
           onPress={() => navigation.navigate('Login')}
-         />
+         /> */}
             
         </View> 
          );
@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        textAlign:'center'
+        textAlign:'center',
+        opacity: 0.8
     },
     senha:{
         fontSize:30,
@@ -72,7 +73,8 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        textAlign:'center'
+        textAlign:'center',
+        opacity: 0.8
     },
     titulo:{
         fontSize:55,

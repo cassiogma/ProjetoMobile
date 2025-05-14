@@ -1,13 +1,29 @@
 import { View, Text, StyleSheet,FlatList, Image } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../components2/card";
+import {db} from '../controller';
+import { collection, getDocs } from "firebase/firestore";
 
 export default function Product(){
-    const [produtos, setProdutos] = useState([
-        {id:1, nome: 'marmita', valor: 15.99, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqGMmArfRUtoKU8AzA0cdYaENVSxfUqGCn0g&s}'},
-        {id:2, nome: 'vitamina', valor: 3.99, img:  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCuONbMTFbbUj5QlAj_h_SPMGZ1bEsee5b2g&s'},
-        {id:3, nome: 'barrinha', valor: 2.99,  img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv1Gs3HTOa-aVTC2omiZdlo71BI2HgzZknFQ&s'},
-    ])
+    const [produtos, setProdutos] = useState([    ])
+
+
+    useEffect (() => {
+        async function carregarProdutos() {
+            try {
+                const querrySnapshot = await getDocs(collection(db,'produtos'));
+                const lista = [];
+                querrySnapshot.forEach((doc) => {
+                    lista.push({id: doc.id, ...doc.data()});
+                });
+                setProdutos(lista);
+            } catch (error){
+                console.log("erro ao buscar produtos:", error)
+            }
+            
+        }
+        carregarProdutos();
+    })
     return(
         <View style={styles.container}>
             {/* <Text style={styles.title}>Produtos</Text>
@@ -24,7 +40,7 @@ export default function Product(){
                 <Card
                 nome={item.nome}
                 valor={item.valor}
-                img={item.img}/>
+                img={item.imagem}/>
             )}
             keyExtractor={item => item.id}
             />

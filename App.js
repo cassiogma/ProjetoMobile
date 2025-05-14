@@ -11,6 +11,7 @@ import Feed from './components/screens/feed';
 import Counter from './components/screens/counter';
 import Product from './components/screens/product';
 import Register from './components/screens/Register';
+import Cadastro_produto from './components/screens/addproduct';
 
 
 function Bottomtabs(){
@@ -50,6 +51,12 @@ function Bottomtabs(){
         options={{
           tabBarIcon: () => (
             <MaterialIcons name="exposure-minus-1" size={24} color="black" />
+          ),
+        }}/>
+        <BottomTab.Screen name='addproduct' component={Cadastro_produto}
+        options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="app-registration" size={24} color="black" />
           ),
         }}/>
 

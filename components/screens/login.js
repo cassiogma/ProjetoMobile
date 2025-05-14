@@ -1,8 +1,9 @@
-import {Text, View,StyleSheet,TextInput,Button} from 'react-native'
+import {Text, View,StyleSheet,TextInput,Button,} from 'react-native'
 import Home from './home';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import { auth } from '../controller';
 import {useState} from "react";
+import { TouchableOpacity } from 'react-native';
 export default function Login ({navigation}){
 
     const [email,setEmail] = useState("")
@@ -13,8 +14,7 @@ export default function Login ({navigation}){
             then(userCredential => {
                 console.log('usuario logado', userCredential.user.email);
                 navigation.navigate('Hometab');
-            })
-            .catch((error) => {
+            }).catch((error) => {
                 console.log('erro ao logar', error.message)
             })
         }
@@ -36,11 +36,15 @@ export default function Login ({navigation}){
 /*           onPress={() => navigation.navigate('Hometab')} */
           onPress = {VerificaUser}
          />
-         <Button
+         {/* <Button
           title="Cadastre-se"
           color="#3CB371"
           onPress={() => navigation.navigate('Cadastro')}
-         />
+         /> */}
+         <Text style={styles.textonmrl}>Não tem uma conta?</Text>
+         <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
+            <Text style={styles.txtcadastro}>Cadastre-se</Text>
+         </TouchableOpacity>
             
         </View> 
          );
@@ -60,7 +64,8 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        textAlign:'center'
+        textAlign:'center',
+        opacity: 0.8
     },
     senha:{
         fontSize:30,
@@ -68,11 +73,19 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        textAlign:'center'
+        textAlign:'center',
+        opacity: 0.8
     },
     titulo:{
         fontSize:55,
         fontStyle:'italic',
         color:'#556B2F'
+    },
+    txtcadastro:{
+        fontSize:20,
+        color:'#556B2F'
+    },
+    textonmrl:{
+        fontSize:20,
     }
 })
