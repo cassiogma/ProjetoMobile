@@ -1,33 +1,50 @@
 import {Text, View,StyleSheet,TextInput,Button,} from 'react-native'
 import Home from './home';
+import { useState } from 'react';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../controller';
 export default function Cadastro_produto (){
 
+    const [nome,setNome] = useState("");
+    const [valor, setValor] = useState("");
+    const [imagem, setImagem] = useState("");
+
+    const CadastrarProduto = async () => {
+        try {
+            await addDoc(collection(db,'produtos'),{
+                nome,
+                valor: parseFloat(valor),
+                imagem
+            }),
+            setNome('');
+            setValor('');
+            setImagem('');
+        }
+        catch (error){
+            console.log('erro no cadastro do produto', error);
+        }
+    }
 
     return(
         <View style={styles.Login}>
             <Text style={styles.titulo}>cadastro do produto</Text>
             <TextInput style={styles.produto}
-            /* value={produto}
-            onChangeText={setProduto} */
+            value={nome}
+            onChangeText={setNome}
             placeholder='nome do produto'/>
             <TextInput style={styles.valor}
-            /* value={valor}
-            onChangeText={setValor} */
+            value={valor}
+            onChangeText={setValor}
             placeholder='preço'/>
             <TextInput style={styles.imagem}
-            /* value={imagem}
-            onChangeText={setImagem} */
+            value={imagem}
+            onChangeText={setImagem}
             placeholder='link da imagem'/>
-            <Button
-          title="cadastrar"
+         {<Button
+          title="Cadastrar"
           color="#3CB371"
-/*           onPress={() => navigation.navigate('Hometab')} */
-         />
-         {/* <Button
-          title="Cadastre-se"
-          color="#3CB371"
-          onPress={() => navigation.navigate('Cadastro')}
-         /> */} 
+          onPress={CadastrarProduto}
+         />} 
         </View> 
          );
 }

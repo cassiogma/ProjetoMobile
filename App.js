@@ -35,6 +35,12 @@ function Bottomtabs(){
             <MaterialIcons name="shopping-cart" size={24} color="black" />
           ),
         }}/>
+        <BottomTab.Screen name='addproduct' component={Cadastro_produto}
+        options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="app-registration" size={24} color="black" />
+          ),
+        }}/>
         <BottomTab.Screen name='Home' component={Home}
         options={{
           tabBarIcon: () => (
@@ -53,13 +59,7 @@ function Bottomtabs(){
             <MaterialIcons name="exposure-minus-1" size={24} color="black" />
           ),
         }}/>
-        <BottomTab.Screen name='addproduct' component={Cadastro_produto}
-        options={{
-          tabBarIcon: () => (
-            <MaterialIcons name="app-registration" size={24} color="black" />
-          ),
-        }}/>
-
+        
       </BottomTab.Navigator>
   )
 }
