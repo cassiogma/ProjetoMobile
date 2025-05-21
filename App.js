@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { ProviderCart } from './components/components2/ProviderCart';
 
 import Home from './components/screens/home';
 import Login from './components/screens/login';
@@ -12,6 +13,7 @@ import Counter from './components/screens/counter';
 import Product from './components/screens/product';
 import Register from './components/screens/Register';
 import Cadastro_produto from './components/screens/addproduct';
+import carrinho from './components/screens/carrinho';
 
 
 function Bottomtabs(){
@@ -59,6 +61,12 @@ function Bottomtabs(){
             <MaterialIcons name="exposure-minus-1" size={24} color="black" />
           ),
         }}/>
+        <BottomTab.Screen name='carrinho' component={carrinho}
+        options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="exposure-minus-1" size={24} color="black" />
+          ),
+        }}/>
         
       </BottomTab.Navigator>
   )
@@ -68,14 +76,15 @@ export default function App() {
 
 const Stack = createStackNavigator();
   return (
-    
-    <NavigationContainer>
-      <Stack.Navigator>
-      <Stack.Screen name='Login' component={Login}/>
-      <Stack.Screen name='Cadastro' component={Register}/>
-      <Stack.Screen options={{headerShown:false}} name= 'Hometab' component = {Bottomtabs}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ProviderCart>
+      <NavigationContainer>
+        <Stack.Navigator>
+        <Stack.Screen name='Login' component={Login}/>
+        <Stack.Screen name='Cadastro' component={Register}/>
+        <Stack.Screen options={{headerShown:false}} name= 'Hometab' component = {Bottomtabs}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ProviderCart>
   );
 }
 

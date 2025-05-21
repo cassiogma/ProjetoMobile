@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import Card from "../components2/card";
 import {db} from '../controller';
 import { collection, getDocs } from "firebase/firestore";
+import { useCarrinho } from "../components2/ProviderCart";
 
-export default function Product(){
+export default function Product({navigation}){
     const [produtos, setProdutos] = useState([    ])
+    const {adicionarProduct} = useCarrinho()
 
 
     useEffect (() => {
@@ -40,7 +42,11 @@ export default function Product(){
                 <Card
                 nome={item.nome}
                 valor={item.valor}
-                img={item.imagem}/>
+                img={item.imagem}
+                comprar={() => {
+                    adicionarProduct(item)
+                    navigation.navigate('carrinho');
+                }}/>
             )}
             keyExtractor={item => item.id}
             />
